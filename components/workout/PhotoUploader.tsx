@@ -43,7 +43,7 @@ export default function PhotoUploader({ workoutId, onAttached }: Props) {
       onAttached(res.url);
       haptics.confirm();
     } else {
-      setError(res.error ?? "Upload failed");
+      setError(res.error ?? "Upload gagal");
       onAttached(localUrl); // still attach locally
     }
   }
@@ -66,14 +66,14 @@ export default function PhotoUploader({ workoutId, onAttached }: Props) {
       {preview ? (
         <div className="relative w-16 h-16 rounded-xl overflow-hidden border border-white/15">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={preview} alt="Set attachment" className="w-full h-full object-cover" />
+          <img src={preview} alt="Lampiran set" className="w-full h-full object-cover" />
           {uploading && (
             <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
               <Loader2 className="w-5 h-5 animate-spin text-ocean" />
             </div>
           )}
           <button
-            aria-label="Remove photo"
+            aria-label="Hapus foto"
             onClick={() => {
               setPreview(null);
               setRemoteUrl(null);
@@ -97,10 +97,10 @@ export default function PhotoUploader({ workoutId, onAttached }: Props) {
           className="w-16 h-16 rounded-xl border border-dashed border-white/20 bg-white/[0.03]
             flex flex-col items-center justify-center gap-1 text-white/45
             hover:border-ocean/50 hover:text-ocean transition-colors"
-          aria-label="Attach photo"
+          aria-label="Lampirkan foto"
         >
           <Camera className="w-5 h-5" />
-          <span className="text-[8px] tracking-widest uppercase">Photo</span>
+          <span className="text-[8px] tracking-widest uppercase">Foto</span>
         </button>
       )}
 

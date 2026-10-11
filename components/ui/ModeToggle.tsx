@@ -12,8 +12,8 @@ import styles from "./ModeToggle.module.css";
 export default function ModeToggle({
   on,
   onChange,
-  offLabel = "Manual Rest",
-  onLabel = "Auto Rest",
+  offLabel = "Rest Manual",
+  onLabel = "Rest Otomatis",
 }: {
   on: boolean;
   onChange: (v: boolean) => void;
@@ -45,7 +45,7 @@ export default function ModeToggle({
         type="button"
         role="switch"
         aria-checked={on}
-        aria-label={`Toggle rest mode: ${on ? onLabel : offLabel}`}
+        aria-label={`Ganti mode istirahat: ${on ? onLabel : offLabel}`}
         className={`${styles.switch} ${on ? styles.on : ""}`}
         onClick={() => {
           haptics.tap();

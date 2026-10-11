@@ -27,7 +27,7 @@ const H = 220;
 const PAD = { l: 6, r: 6, t: 56, b: 10 };
 
 function dayLabel(ts: number) {
-  return new Date(ts).toLocaleDateString("en-US", { weekday: "short" });
+  return new Date(ts).toLocaleDateString("id-ID", { weekday: "short" });
 }
 
 interface ChartPoint {
@@ -110,9 +110,9 @@ export default function StatsDashboard() {
   const card = (
     <>
       <h1 className="font-display text-center text-[34px] leading-[0.96] tracking-tight text-white mb-6">
-        TRAIN WITH
+        LATIHAN DENGAN
         <br />
-        PRECISION.
+        PRESISI.
       </h1>
 
       <div className="flex gap-5">
@@ -127,7 +127,7 @@ export default function StatsDashboard() {
                     ? "text-white bg-gradient-to-b from-volt/60 to-volt/25 shadow-[0_0_16px_rgba(212,255,0,0.5)]"
                     : "text-white/40 hover:text-white hover:bg-white/[0.06]"
                 }`}
-              aria-label={`Nav ${i}`}
+              aria-label={`Menu ${i + 1}`}
             >
               <Icon className="w-3.5 h-3.5" />
             </button>
@@ -138,11 +138,11 @@ export default function StatsDashboard() {
           {/* stat row */}
           <div className="flex gap-10 mb-1">
             <div>
-              <div className="text-xs text-white/50 mb-1">Rest Compliance</div>
+              <div className="text-xs text-white/50 mb-1">Kepatuhan Istirahat</div>
               <div className="text-xl font-bold text-white tabular-nums">{compliance}%</div>
             </div>
             <div>
-              <div className="text-xs text-white/50 mb-1">Sets / 7d</div>
+              <div className="text-xs text-white/50 mb-1">Set / 7 hari</div>
               <div className="text-xl font-bold text-volt tabular-nums" style={{ textShadow: "0 0 40px rgba(212,255,0,0.6)" }}>
                 {weekSets}
               </div>
@@ -239,7 +239,7 @@ export default function StatsDashboard() {
                 <TrendingUp className="w-3.5 h-3.5 text-volt" />
               </div>
               <div>
-                <div className="text-[11px] text-white/45">Total Volume</div>
+                <div className="text-[11px] text-white/45">Volume Total</div>
                 <div className="text-sm font-bold text-white tabular-nums">
                   {Math.round(totalVolume).toLocaleString()} kg
                 </div>
@@ -250,9 +250,9 @@ export default function StatsDashboard() {
                 <Flame className="w-3.5 h-3.5 text-cyber" />
               </div>
               <div>
-                <div className="text-[11px] text-white/45">Rest Sessions</div>
+                <div className="text-[11px] text-white/45">Sesi Istirahat</div>
                 <div className="text-sm font-bold text-white tabular-nums">
-                  {restSessions.length} <span className="text-ocean text-xs font-semibold">logged</span>
+                  {restSessions.length} <span className="text-ocean text-xs font-semibold">tercatat</span>
                 </div>
               </div>
             </div>

@@ -1,15 +1,23 @@
 import type { Metadata, Viewport } from "next";
+import PWARegister from "@/components/PWARegister";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "RestPulse — Gym & Rest Timer Assistant",
+  title: "RestPulse — Timer Gym & Istirahat",
   description:
-    "Analog rest timer, smart exercise form guides, and workout logging. Feel the pulse of every set.",
+    "Timer istirahat analog, panduan form latihan, dan pencatatan workout. Rasakan ritme setiap set.",
   manifest: "/manifest.webmanifest",
+  icons: {
+    icon: "/icons/favicon-64.png",
+    apple: "/icons/apple-touch-icon.png",
+  },
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
     title: "RestPulse",
+  },
+  other: {
+    "mobile-web-app-capable": "yes",
   },
 };
 
@@ -24,8 +32,11 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className="font-body antialiased">{children}</body>
+    <html lang="id">
+      <body className="font-body antialiased">
+        <PWARegister />
+        {children}
+      </body>
     </html>
   );
 }

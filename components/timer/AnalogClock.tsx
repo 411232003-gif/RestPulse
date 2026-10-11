@@ -11,9 +11,9 @@ const PHASE_COLOR: Record<TimerPhase, string> = {
 };
 
 const PHASE_LABEL: Record<TimerPhase, string> = {
-  calm: "RECOVER",
-  warning: "GET READY",
-  peak: "GO!",
+  calm: "PULIHKAN",
+  warning: "BERSIAP",
+  peak: "GAS!",
 };
 
 function easeInOutCubic(t: number) {
@@ -22,7 +22,10 @@ function easeInOutCubic(t: number) {
 
 function polar(cx: number, cy: number, r: number, deg: number) {
   const rad = ((deg - 90) * Math.PI) / 180;
-  return { x: cx + r * Math.cos(rad), y: cy + r * Math.sin(rad) };
+  // round to 4 decimals — server & browser float math differ in the last
+  // bits, which causes React hydration mismatches on svg attributes
+  const round = (v: number) => Math.round(v * 1e4) / 1e4;
+  return { x: round(cx + r * Math.cos(rad)), y: round(cy + r * Math.sin(rad)) };
 }
 
 function describeArc(cx: number, cy: number, r: number, startDeg: number, endDeg: number) {
@@ -209,7 +212,7 @@ export default function AnalogClock({ timer, size = 340 }: Props) {
             transition: "color 0.5s ease",
           }}
         >
-          {status === "running" || status === "paused" ? PHASE_LABEL[phase] : status === "rewinding" ? "REWIND" : "REST PULSE"}
+          {status === "running" || status === "paused" ? PHASE_LABEL[phase] : status === "rewinding" ? "MUNDUR" : "REST PULSE"}
         </div>
       </div>
     </div>

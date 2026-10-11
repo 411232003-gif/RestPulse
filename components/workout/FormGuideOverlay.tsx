@@ -14,13 +14,13 @@ const V = { w: 200, h: 320 };
 
 // front-view mannequin muscle zones per muscleGroup
 const MUSCLE_ZONES: Record<string, { cx: number; cy: number; rx: number; ry: number; rot?: number }[]> = {
-  Chest: [
+  Dada: [
     { cx: 84, cy: 102, rx: 15, ry: 11, rot: -12 },
     { cx: 116, cy: 102, rx: 15, ry: 11, rot: 12 },
     { cx: 63, cy: 96, rx: 7, ry: 10, rot: 20 },
     { cx: 137, cy: 96, rx: 7, ry: 10, rot: -20 },
   ],
-  Legs: [
+  Kaki: [
     { cx: 85, cy: 205, rx: 11, ry: 26, rot: 4 },
     { cx: 115, cy: 205, rx: 11, ry: 26, rot: -4 },
     { cx: 88, cy: 262, rx: 7, ry: 20 },
@@ -28,7 +28,7 @@ const MUSCLE_ZONES: Record<string, { cx: number; cy: number; rx: number; ry: num
     { cx: 84, cy: 168, rx: 10, ry: 8, rot: 15 },
     { cx: 116, cy: 168, rx: 10, ry: 8, rot: -15 },
   ],
-  "Posterior Chain": [
+  "Rantai Posterior": [
     { cx: 84, cy: 170, rx: 12, ry: 9, rot: 15 },
     { cx: 116, cy: 170, rx: 12, ry: 9, rot: -15 },
     { cx: 85, cy: 230, rx: 9, ry: 22, rot: 5 },
@@ -37,20 +37,20 @@ const MUSCLE_ZONES: Record<string, { cx: number; cy: number; rx: number; ry: num
     { cx: 78, cy: 96, rx: 8, ry: 9, rot: 25 },
     { cx: 122, cy: 96, rx: 8, ry: 9, rot: -25 },
   ],
-  Back: [
+  Punggung: [
     { cx: 80, cy: 118, rx: 10, ry: 24, rot: 18 },
     { cx: 120, cy: 118, rx: 10, ry: 24, rot: -18 },
     { cx: 60, cy: 130, rx: 6, ry: 18, rot: -12 },
     { cx: 140, cy: 130, rx: 6, ry: 18, rot: 12 },
   ],
-  Shoulders: [
+  Bahu: [
     { cx: 62, cy: 94, rx: 10, ry: 12, rot: 20 },
     { cx: 138, cy: 94, rx: 10, ry: 12, rot: -20 },
     { cx: 100, cy: 82, rx: 16, ry: 7 },
     { cx: 55, cy: 145, rx: 5, ry: 16 },
     { cx: 145, cy: 145, rx: 5, ry: 16 },
   ],
-  Arms: [
+  Lengan: [
     { cx: 54, cy: 138, rx: 6, ry: 17, rot: -8 },
     { cx: 146, cy: 138, rx: 6, ry: 17, rot: 8 },
     { cx: 50, cy: 182, rx: 5, ry: 15 },
@@ -60,17 +60,17 @@ const MUSCLE_ZONES: Record<string, { cx: number; cy: number; rx: number; ry: num
 
 // joint marker positions on the mannequin
 const JOINT_POS: Record<string, { x: number; y: number }> = {
-  Elbow: { x: 52, y: 156 },
-  Wrist: { x: 48, y: 205 },
-  Shoulder: { x: 64, y: 92 },
-  Hip: { x: 100, y: 172 },
-  Knee: { x: 86, y: 246 },
-  Ankle: { x: 88, y: 300 },
-  Spine: { x: 100, y: 128 },
+  Siku: { x: 52, y: 156 },
+  Pergelangan: { x: 48, y: 205 },
+  Bahu: { x: 64, y: 92 },
+  Pinggul: { x: 100, y: 172 },
+  Lutut: { x: 86, y: 246 },
+  "Mata kaki": { x: 88, y: 300 },
+  Punggung: { x: 100, y: 128 },
 };
 
 function Mannequin({ muscleGroup }: { muscleGroup: string }) {
-  const zones = MUSCLE_ZONES[muscleGroup] ?? MUSCLE_ZONES["Chest"];
+  const zones = MUSCLE_ZONES[muscleGroup] ?? MUSCLE_ZONES["Dada"];
   return (
     <svg viewBox={`0 0 ${V.w} ${V.h}`} className="w-full h-full">
       <defs>
@@ -139,7 +139,7 @@ export default function FormGuideOverlay({ exercise }: { exercise: Exercise }) {
         />
         <Mannequin muscleGroup={exercise.muscleGroup} />
         <div className="absolute top-2 left-2 text-[9px] tracking-[0.3em] text-ocean/70 uppercase">
-          Form Scan
+          Pindai Form
         </div>
       </div>
 
@@ -147,7 +147,7 @@ export default function FormGuideOverlay({ exercise }: { exercise: Exercise }) {
       <div className="space-y-4 min-w-0">
         <div>
           <div className="text-[10px] tracking-[0.3em] uppercase text-white/40 mb-2">
-            Joint Cues
+            Sudut Sendi
           </div>
           <div className="grid gap-2">
             {exercise.formCues.map((c) => {
@@ -173,7 +173,7 @@ export default function FormGuideOverlay({ exercise }: { exercise: Exercise }) {
 
         <div className="grid grid-cols-2 gap-3">
           <div className="rounded-xl border border-ocean/20 bg-ocean/[0.05] p-3">
-            <div className="text-[10px] tracking-[0.25em] uppercase text-ocean mb-2">Do</div>
+            <div className="text-[10px] tracking-[0.25em] uppercase text-ocean mb-2">Lakukan</div>
             <ul className="space-y-1.5">
               {exercise.dos.map((d) => (
                 <li key={d} className="flex gap-1.5 text-[11px] leading-snug text-white/70">
@@ -184,7 +184,7 @@ export default function FormGuideOverlay({ exercise }: { exercise: Exercise }) {
             </ul>
           </div>
           <div className="rounded-xl border border-infra/25 bg-infra/[0.05] p-3">
-            <div className="text-[10px] tracking-[0.25em] uppercase text-infra mb-2">Don&apos;t</div>
+            <div className="text-[10px] tracking-[0.25em] uppercase text-infra mb-2">Jangan</div>
             <ul className="space-y-1.5">
               {exercise.donts.map((d) => (
                 <li key={d} className="flex gap-1.5 text-[11px] leading-snug text-white/70">

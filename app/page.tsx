@@ -3,7 +3,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Activity,
   Dumbbell,
   Flame,
   Vibrate,
@@ -117,26 +116,27 @@ export default function Home() {
       {/* ── header ─────────────────────────────────────────── */}
       <header className="flex items-center justify-between py-5">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-2xl bg-volt/15 border border-volt/40 flex items-center justify-center shadow-volt-glow">
-            <Activity className="w-5 h-5 text-volt" />
+          <div className="w-11 h-11 rounded-2xl overflow-hidden border border-volt/40 shadow-volt-glow shrink-0">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/icons/icon-192.png" alt="Logo RestPulse" className="w-full h-full object-cover" />
           </div>
           <div>
             <div className="font-display text-lg tracking-[0.25em] leading-none">
               REST<span className="text-volt">PULSE</span>
             </div>
             <div className="text-[9px] tracking-[0.35em] text-white/35 uppercase mt-1">
-              Gym & Rest Timer
+              Timer Gym & Istirahat
             </div>
           </div>
         </div>
 
         <div className="flex items-center gap-2">
           <span className="hidden sm:inline text-[9px] tracking-[0.25em] uppercase text-white/35 border border-white/10 rounded-full px-3 py-1.5">
-            {hydrated ? backendLabel() : "…"} sync
+            Sinkron {hydrated ? backendLabel() : "…"}
           </span>
           <button
             onClick={() => updateProfile({ soundEnabled: !profile.soundEnabled })}
-            aria-label="Toggle sound"
+            aria-label="Suara"
             className={`w-10 h-10 rounded-xl border flex items-center justify-center transition-all
               ${profile.soundEnabled ? "border-ocean/40 text-ocean bg-ocean/10" : "border-white/10 text-white/35"}`}
           >
@@ -144,7 +144,7 @@ export default function Home() {
           </button>
           <button
             onClick={() => updateProfile({ hapticsEnabled: !profile.hapticsEnabled })}
-            aria-label="Toggle haptics"
+            aria-label="Getar"
             className={`w-10 h-10 rounded-xl border flex items-center justify-center transition-all
               ${profile.hapticsEnabled ? "border-volt/40 text-volt bg-volt/10" : "border-white/10 text-white/35"}`}
           >
@@ -181,8 +181,8 @@ export default function Home() {
             <Iso3DButton
               variant="volt"
               icon={<Zap />}
-              label="Quick Rest"
-              sublabel={`${timer.durationSec}s countdown`}
+              label="Rest Cepat"
+              sublabel={`${timer.durationSec} detik`}
               onClick={() => {
                 unlockAudio();
                 timer.start();
@@ -199,7 +199,7 @@ export default function Home() {
           <div className="flex items-center justify-between mb-1">
             <h2 className="font-display text-sm tracking-[0.25em] uppercase text-white/80 flex items-center gap-2">
               <Dumbbell className="w-4 h-4 text-ocean" />
-              Exercises
+              Latihan
             </h2>
             <span className="text-[10px] text-white/35 tracking-widest">{EXERCISES.length}</span>
           </div>
@@ -221,7 +221,7 @@ export default function Home() {
 
           <GlassCard accent="#00E5FF">
             <h2 className="font-display text-sm tracking-[0.25em] uppercase text-white/80 mb-4">
-              Form Guide · <span className="text-ocean">{activeExercise.name}</span>
+              Panduan Form · <span className="text-ocean">{activeExercise.name}</span>
             </h2>
             <FormGuideOverlay exercise={activeExercise} />
           </GlassCard>
@@ -243,7 +243,7 @@ export default function Home() {
           >
             <h2 className="font-display text-sm tracking-[0.25em] uppercase text-white/70 mb-4 flex items-center gap-2">
               <Flame className="w-4 h-4 text-cyber" />
-              Recent Sets
+              Set Terakhir
             </h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
               {recentSets.map((s) => (
@@ -267,7 +267,7 @@ export default function Home() {
                     <div className="text-[10px] text-white/35 mt-1 flex items-center justify-between">
                       <span>Set {s.setIndex}</span>
                       <span className={s.restCompleted ? "text-ocean" : "text-white/35"}>
-                        {s.restCompleted ? `rested ${s.restSeconds}s` : "no rest"}
+                        {s.restCompleted ? `istirahat ${s.restSeconds}d` : "tanpa istirahat"}
                       </span>
                     </div>
                   </div>

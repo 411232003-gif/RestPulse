@@ -30,7 +30,7 @@ export const DEFAULT_USER_ID = "local-athlete";
 
 export const DEFAULT_PROFILE: UserProfile = {
   id: DEFAULT_USER_ID,
-  displayName: "Athlete",
+  displayName: "Atlet",
   defaultRestSeconds: 60,
   autoRest: true,
   soundEnabled: true,
@@ -165,5 +165,5 @@ export async function saveRestSession(s: RestSession) {
 }
 
 export function backendLabel() {
-  return firebaseEnabled ? "Firestore" : "Local";
+  return firebaseEnabled ? "Firestore" : "Lokal";
 }

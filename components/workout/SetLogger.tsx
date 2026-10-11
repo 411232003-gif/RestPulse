@@ -38,7 +38,7 @@ function Stepper({
           }}
           className="w-12 h-12 rounded-xl bg-white/[0.06] border border-white/12 flex items-center justify-center
             text-white/70 hover:bg-white/12 active:scale-90 transition-all"
-          aria-label={`Decrease ${label}`}
+          aria-label={`Kurangi ${label}`}
         >
           <Minus className="w-5 h-5" />
         </button>
@@ -53,7 +53,7 @@ function Stepper({
           }}
           className="w-12 h-12 rounded-xl bg-white/[0.06] border border-white/12 flex items-center justify-center
             text-white/70 hover:bg-white/12 active:scale-90 transition-all"
-          aria-label={`Increase ${label}`}
+          aria-label={`Tambah ${label}`}
         >
           <Plus className="w-5 h-5" />
         </button>
@@ -115,7 +115,7 @@ export default function SetLogger({
       </div>
 
       <div className="flex flex-col sm:flex-row gap-3">
-        <Stepper label="Weight" unit="kg" value={weight} onChange={setWeight} step={2.5} min={0} max={500} />
+        <Stepper label="Beban" unit="kg" value={weight} onChange={setWeight} step={2.5} min={0} max={500} />
         <Stepper label="Reps" unit="reps" value={reps} onChange={setReps} step={1} min={1} max={100} />
       </div>
 
@@ -128,7 +128,7 @@ export default function SetLogger({
             flex items-center justify-center gap-2 text-sm sm:text-base"
         >
           <Check className="w-5 h-5" strokeWidth={3} />
-          Complete Set
+          Selesai Set
         </button>
       </div>
     </div>

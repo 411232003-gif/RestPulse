@@ -80,11 +80,12 @@ export function playTimesUp() {
   beep(1046.5, t + 0.2, 0.4, "sine", 0.14);
 }
 
-/** Spoken-style cue fallback via SpeechSynthesis ("Back to the set!"). */
-export function speakTimesUp(text = "Time's up! Back to the set!") {
+/** Spoken-style cue via SpeechSynthesis ("Waktu habis!"). */
+export function speakTimesUp(text = "Waktu habis! Kembali ke set!") {
   if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
   try {
     const u = new SpeechSynthesisUtterance(text);
+    u.lang = "id-ID";
     u.rate = 1.1;
     u.pitch = 1.05;
     u.volume = 0.9;

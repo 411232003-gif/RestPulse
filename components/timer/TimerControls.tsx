@@ -46,7 +46,7 @@ export default function TimerControls({ timer }: { timer: RestTimer }) {
               shadow-volt-glow hover:brightness-110 active:scale-95 transition-all flex items-center gap-3"
           >
             <Play className="w-6 h-6" fill="currentColor" />
-            Start Rest
+            Mulai Istirahat
           </button>
         )}
 
@@ -61,7 +61,7 @@ export default function TimerControls({ timer }: { timer: RestTimer }) {
                 shadow-amber-glow hover:brightness-110 active:scale-95 transition-all flex items-center gap-3"
             >
               <Pause className="w-6 h-6" fill="currentColor" />
-              Pause
+              Jeda
             </button>
             <button
               onClick={() => {
@@ -70,7 +70,7 @@ export default function TimerControls({ timer }: { timer: RestTimer }) {
               }}
               className="h-16 w-16 rounded-2xl bg-white/8 border border-white/15 text-white/80
                 hover:bg-white/15 active:scale-95 transition-all flex items-center justify-center"
-              aria-label="Skip rest"
+              aria-label="Lewati istirahat"
             >
               <SkipForward className="w-6 h-6" />
             </button>
@@ -88,7 +88,7 @@ export default function TimerControls({ timer }: { timer: RestTimer }) {
                 shadow-cyan-glow hover:brightness-110 active:scale-95 transition-all flex items-center gap-3"
             >
               <Play className="w-6 h-6" fill="currentColor" />
-              Resume
+              Lanjut
             </button>
             <button
               onClick={() => {
@@ -97,7 +97,7 @@ export default function TimerControls({ timer }: { timer: RestTimer }) {
               }}
               className="h-16 w-16 rounded-2xl bg-white/8 border border-white/15 text-white/80
                 hover:bg-white/15 active:scale-95 transition-all flex items-center justify-center"
-              aria-label="Skip rest"
+              aria-label="Lewati istirahat"
             >
               <SkipForward className="w-6 h-6" />
             </button>
@@ -108,7 +108,7 @@ export default function TimerControls({ timer }: { timer: RestTimer }) {
       {status !== "idle" && (
         <div className="text-white/40 text-xs tracking-[0.3em] uppercase flex items-center gap-2">
           <RotateCcw className="w-3 h-3" />
-          {status === "rewinding" ? "Back to the set" : "Rest in progress"}
+          {status === "rewinding" ? "Kembali latihan" : "Istirahat berjalan"}
         </div>
       )}
     </div>
