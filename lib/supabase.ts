@@ -6,7 +6,22 @@ import { createClient, type SupabaseClient } from "@supabase/supabase-js";
  * Bucket: `gym-progress-photos` (public or signed-URL policy).
  */
 
-const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+/**
+ * Normalize the project URL — strips any trailing path like `/rest/v1`
+ * that gets pasted from the wrong field in the Supabase dashboard.
+ * The storage client builds `${url}/storage/v1/...`, so a stray path
+ * produces the "Invalid path specified in request URL" 404.
+ */
+function normalizeSupabaseUrl(raw?: string): string | undefined {
+  if (!raw) return undefined;
+  try {
+    return new URL(raw.trim()).origin;
+  } catch {
+    return raw.replace(/\/+$/, "").split("/rest/v1")[0];
+  }
+}
+
+const url = normalizeSupabaseUrl(process.env.NEXT_PUBLIC_SUPABASE_URL);
 const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 const bucket = process.env.NEXT_PUBLIC_SUPABASE_BUCKET ?? "gym-progress-photos";
 

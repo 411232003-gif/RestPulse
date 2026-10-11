@@ -1,7 +1,7 @@
 /* RestPulse service worker — offline shell + static asset caching.
    API calls (Supabase/Firebase) are always network-only. */
 
-const CACHE = "restpulse-v1";
+const CACHE = "restpulse-v2";
 const SHELL = ["/", "/manifest.webmanifest", "/icons/icon-192.png", "/icons/icon-512.png"];
 
 self.addEventListener("install", (e) => {
